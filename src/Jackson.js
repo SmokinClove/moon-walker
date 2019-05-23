@@ -26,6 +26,7 @@ export default function Jackson() {
   const [danceMode, setDanceMode] = useState(MOON_WALK_MODE); /* 0: moon walk, 1: dance walk */
   const [on, setOn] = useState(false);
   const [delay, setDelay] = useState(700);
+  const [animDur, setAnimDur] = useState(0.7);
 
   const jackson = useCallback(node => {
     if(node !== null) {
@@ -56,10 +57,12 @@ export default function Jackson() {
   },[animStage, animationTimingFunc]);
   useEffect(() => {
     if(isJacksonOutOfStage()) {
-        moveJacksonToEdge();
+      setAnimDur(0);
+      moveJacksonToEdge();
     }
   });
   var moveOneIndex = () => {
+    setAnimDur(0.7);
     var leftLeg = document.getElementById('left-leg');
     var rightLeg = document.getElementById('right-leg');
     if(danceMode === MOON_WALK_MODE) {
@@ -114,7 +117,7 @@ export default function Jackson() {
     <div className="playground">
       <div className="ceiling"></div>
       <div className="dancer-space">
-        <div className="micheal-jackson" id="micheal-jackson" ref={jackson} style={{right:rightOffset, transition: `right 0.7s ${animFunc}`, transform:`${danceMode === DUCK_WALK_MODE ? 'scale(-1,1)' : ''}`}}>
+        <div className="micheal-jackson" id="micheal-jackson" ref={jackson} style={{right:rightOffset, transition: `right ${animDur}s ${animFunc}`, transform:`${danceMode === DUCK_WALK_MODE ? 'scale(-1,1)' : ''}`}}>
           <div className="head">
             <div className="hat">
               <div className="hat-top"></div>
