@@ -1,4 +1,4 @@
-.playground {
+.playground-moonwalk {
   width: 100vw;
   height: 100vh;
   background-color: rgba(7, 6, 6, 0.9);
@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: content-box;
 }
 
 .ceiling {
@@ -58,7 +59,7 @@
   border-right: 10px solid transparent;
   width: 45px;
 }
-.face {
+#micheal-jackson .face {
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -67,7 +68,7 @@
   margin-top: -30px;
 }
 
-.body {
+#micheal-jackson .body {
   position: relative;
   justify-content: center;
   margin-top: 10px;
@@ -77,7 +78,7 @@
   margin-right: 21px;
 }
 
-.right-arm {
+#micheal-jackson .right-arm {
   position: absolute;
   width: 20px;
   background-color: transparent;
@@ -87,7 +88,7 @@
   height: 15px;
 }
 
-.left-arm {
+#micheal-jackson .left-arm {
   position: absolute;
   width: 20px;
   background-color: transparent;
@@ -97,18 +98,18 @@
   height: 20px;
 }
 
-.legs {
+#micheal-jackson .legs {
   width: 100%;
   margin-top: 2px;
   display: flex;
 }
 
-.left-leg, .right-leg {
+#micheal-jackson .left-leg, #micheal-jackson .right-leg {
   position: relative;
   margin-left: 10px;
 }
 
-.leg-upper.stage-1 {
+#micheal-jackson .leg-upper.stage-1 {
   position: absolute;
   height: 40px;
   width: 15px;
@@ -116,7 +117,7 @@
   transform: rotate(10deg);
 }
 
-.leg-lower.stage-1 {
+#micheal-jackson .leg-lower.stage-1 {
   position: absolute;
   top: 40px;
   height: 40px;
@@ -125,7 +126,7 @@
   transform: rotate(10deg) translateX(-7px);
 }
 
-.foot.stage-1 {
+#micheal-jackson .foot.stage-1 {
   position: absolute;
   top: 80px;
   width: 0px;
@@ -137,7 +138,7 @@
   transform: translateX(-10px);
 }
 
-.leg-upper.stage-2 {
+#micheal-jackson .leg-upper.stage-2 {
   position: absolute;
   height: 40px;
   width: 15px;
@@ -145,7 +146,7 @@
   transform: rotate(-10deg) translate(7px,0px);
 }
 
-.leg-lower.stage-2 {
+#micheal-jackson .leg-lower.stage-2 {
   position: absolute;
   top: 40px;
   height: 40px;
@@ -154,7 +155,7 @@
   transform: rotate(0deg) translate(7px,0px);
 }
 
-.foot.stage-2 {
+#micheal-jackson .foot.stage-2 {
   position: absolute;
   top: 80px;
   width: 0px;
@@ -166,7 +167,7 @@
   transform: rotate(10deg) translate(7px,0px);
 }
 
-.leg-upper.stage-3 {
+#micheal-jackson .leg-upper.stage-3 {
   position: absolute;
   height: 40px;
   width: 15px;
@@ -174,7 +175,7 @@
   transform: rotate(-30deg) translate(18px,10px);
 }
 
-.leg-lower.stage-3 {
+#micheal-jackson .leg-lower.stage-3 {
   position: absolute;
   top: 40px;
   height: 40px;
@@ -183,7 +184,7 @@
   transform: rotate(-10deg) translate(35px, 2px);
 }
 
-.foot.stage-3 {
+#micheal-jackson .foot.stage-3 {
   position: absolute;
   top: 80px;
   width: 0px;
@@ -199,14 +200,14 @@
   animation: moon-walks 1s ease-in-out;
 }
 
-.leg-upper.stage-4 {
+#micheal-jackson .leg-upper.stage-4 {
   position: absolute;
   height: 40px;
   width: 15px;
   background-color: white;
   transform: rotate(-40deg) translate(10px,10px);
 }
-.leg-lower.stage-4 {
+#micheal-jackson .leg-lower.stage-4 {
   position: absolute;
   top: 40px;
   height: 40px;
@@ -215,7 +216,7 @@
   transform: rotate(15deg) translate(20px, -10px);
 }
 
-.foot.stage-4 {
+#micheal-jackson .foot.stage-4 {
   position: absolute;
   top: 80px;
   width: 0px;
@@ -227,14 +228,14 @@
   transform:  translate(14px,-4px) rotate(50deg);
 }
 
-.leg-upper.stage-5 {
+#micheal-jackson .leg-upper.stage-5 {
   position: absolute;
   height: 40px;
   width: 15px;
   background-color: white;
   transform: rotate(-55deg) translate(18px,10px);
 }
-.leg-lower.stage-5 {
+#micheal-jackson .leg-lower.stage-5 {
   position: absolute;
   top: 40px;
   height: 40px;
@@ -243,7 +244,7 @@
   transform: rotate(-30deg) translate(50px, 4px);
 }
 
-.foot.stage-5 {
+#micheal-jackson .foot.stage-5 {
   position: absolute;
   top: 80px;
   width: 0px;
@@ -255,14 +256,14 @@
   transform:  translate(64px,-30px) rotate(-40deg);
 }
 
-.leg-upper.stage-7 {
+#micheal-jackson .leg-upper.stage-7 {
   position: absolute;
   height: 40px;
   width: 15px;
   background-color: white;
   transform: rotate(-25deg) translate(18px,10px);
 }
-.leg-lower.stage-7 {
+#micheal-jackson .leg-lower.stage-7 {
   position: absolute;
   top: 40px;
   height: 40px;
@@ -271,7 +272,7 @@
   transform: rotate(-10deg) translate(30px, 2px);
 }
 
-.foot.stage-7 {
+#micheal-jackson .foot.stage-7 {
   position: absolute;
   top: 80px;
   width: 0px;
@@ -283,14 +284,14 @@
   transform:  translate(34px,-4px) rotate(50deg);
 }
 
-.leg-upper.stage-6 {
+#micheal-jackson .leg-upper.stage-6 {
   position: absolute;
   height: 40px;
   width: 15px;
   background-color: white;
   transform: rotate(-30deg) translate(10px,10px);
 }
-.leg-lower.stage-6 {
+#micheal-jackson .leg-lower.stage-6 {
   position: absolute;
   top: 40px;
   height: 40px;
@@ -299,7 +300,7 @@
   transform: rotate(15deg) translate(15px, -5px);
 }
 
-.foot.stage-6 {
+#micheal-jackson .foot.stage-6 {
   position: absolute;
   top: 80px;
   width: 0px;

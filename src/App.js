@@ -1,13 +1,8 @@
 import React from 'react';
-import './App.css';
 import Jackson from './Jackson';
 
 function App() {
-  return (
-    <div className="App">
-    <Jackson />
-    </div>
-  );
+  return <Jackson />
 }
 
 export default App;

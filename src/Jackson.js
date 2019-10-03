@@ -1,7 +1,29 @@
-import React, { useState, useEffect, useCallback } from "react";
-import useInterval from './useInterval';
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import './Jackson.css';
 // the original duck walk https://www.youtube.com/watch?v=EqS76TFCCYs
+
+// useInterval
+// copied wholesale from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+
+  // Remember the latest callback.
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  // Set up the interval.
+  useEffect(() => {
+    function tick() {
+      !!savedCallback.current && savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
+
 export default function Jackson() {
   const leftLegStages = ["stage-1", "stage-2", "stage-3", "stage-2"];
   const rightLegStages = ["stage-3", "stage-2", "stage-1", "stage-2"];
@@ -23,7 +45,7 @@ export default function Jackson() {
   const [index, setIndex] = useState(1);
   const [animStage, setAnimStage] = useState(0);
   const [animFunc, setAnimFunc] = useState("");
-  const [danceMode, setDanceMode] = useState(MOON_WALK_MODE); /* 0: moon walk, 1: dance walk */
+  const [danceMode, setDanceMode] = useState(MOON_WALK_MODE); /* 0: moon walk, 1: duck walk */
   const [on, setOn] = useState(false);
   const [delay, setDelay] = useState(700);
   const [animDur, setAnimDur] = useState(0.7);
@@ -33,34 +55,27 @@ export default function Jackson() {
       setRightPos(node.getBoundingClientRect().right);
     }
   });
-  const changeDelay = e => {
-    setDelay(e.target.value);
-  }
-  const toggleDance = () => {
-    setDanceMode(danceMode ^ 1);
-  }
-  var moonWalks = () => {
-    setRightOffset(rightOffset + 60);
-  };
-  var duckWalks = () => {
-    setRightOffset(rightOffset + 60);
-  }
-  var moveJacksonToEdge = () => {
-    setRightOffset(0);
-  };
-  const toggleOn = () => {
-    setOn(!on);
-  }
+  // the use states
+  const changeDelay = e => setDelay(e.target.value);
+  const toggleDance = () => setDanceMode(danceMode ^ 1);
+  const moonWalks = () => setRightOffset(rightOffset + 60);
+  const duckWalks = () => setRightOffset(rightOffset + 60);
+  const moveJacksonToEdge = () => setRightOffset(0);
+  const toggleOn = () => setOn(!on);
 
+  
+  // use effects
   useEffect(() => {
     setAnimFunc(animationTimingFunc[animStage]);
   },[animStage, animationTimingFunc]);
   useEffect(() => {
-    if(isJacksonOutOfStage()) {
+    if(rightPos <= 0) { // go out of stage
       setAnimDur(0);
       moveJacksonToEdge();
     }
-  });
+  }, [rightPos]);
+
+  // advance to the next step of the dance
   var moveOneIndex = () => {
     setAnimDur(0.7);
     var leftLeg = document.getElementById('left-leg');
@@ -109,12 +124,9 @@ export default function Jackson() {
     setIndex((index + 1)%NUM_MOVES);
     setAnimStage((animStage + 1)%NUM_MOVES);
   };
-  var isJacksonOutOfStage = () => {
-    return rightPos <= 0;
-  };
   useInterval(moveOneIndex, on ? delay: null); /* <-- This is the main call that kicks off the dancing */
   return (
-    <div className="playground">
+    <div className="playground-moonwalk">
       <div className="ceiling"></div>
       <div className="dancer-space">
         <div className="micheal-jackson" id="micheal-jackson" ref={jackson} style={{right:rightOffset, transition: `right ${animDur}s ${animFunc}`, transform:`${danceMode === DUCK_WALK_MODE ? 'scale(-1,1)' : ''}`}}>
