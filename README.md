@@ -12,4 +12,4 @@ Lots
 4. Beautify Tiny Dancer
 5. Add a partner (?!!!)
 6. Choice of different dancers
-7. ¯\_(ツ)_/¯
+7. `¯\_(ツ)_/¯`

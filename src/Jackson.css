@@ -215,13 +215,34 @@
   transform:  translate(4px,-4px) rotate(30deg);
 }
 
-#micheal-jackson .leg-upper.stage-7 {
-  transform: rotate(-25deg) translate(18px,10px);
-}
-#micheal-jackson .leg-lower.stage-7 {
-  transform: rotate(-10deg) translate(30px, 2px);
+#micheal-jackson .leg-upper.stage-8 {
+  transform: rotate(-120deg);
+  transform-origin: top;
+  transition: transform ease 1s;
 }
 
-#micheal-jackson .foot.stage-7 {
-  transform:  translate(34px,-4px) rotate(50deg);
+#micheal-jackson .leg-lower.stage-8 {
+  transform: translate(40px, -55px);
+  transition: transform ease 1s;
+}
+
+#micheal-jackson .foot.stage-8 {
+  transform: translate(45px,-55px) rotate(-50deg);
+  transition: transform ease 1s;
+}
+
+#micheal-jackson .leg-upper.stage-9 {
+  transform: rotate(-60deg);
+  transform-origin: top;
+  transition: transform ease 1s;
+}
+
+#micheal-jackson .leg-lower.stage-9 {
+  transform: translate(0px,-30px) rotate(60deg);
+  transition: transform ease 1s;
+}
+
+#micheal-jackson .foot.stage-9 {
+  transform: translate(0px,-45px);
+  transition: transform ease 1s;
 }
