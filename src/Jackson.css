@@ -104,10 +104,6 @@
   display: flex;
 }
 
-.moon-walker {
-  animation: moon-walks 1s ease-in-out;
-}
-
 #micheal-jackson .left-leg, #micheal-jackson .right-leg {
   position: relative;
   margin-left: 10px;
