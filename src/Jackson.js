@@ -231,35 +231,29 @@ export default function Jackson() {
           <div className="legs">
             <div className="left-leg" id="left-leg">
               <div
-                className="left-leg-upper leg-upper  stage-1"
-                id="left-leg-upper"
+                className="leg-upper  stage-1"
                 ref={jacksonBodyParts.leftLegUpper}
               ></div>
               <div
-                className="left-leg-lower leg-lower stage-1"
-                id="left-leg-lower"
+                className="leg-lower stage-1"
                 ref={jacksonBodyParts.leftLegLower}
               ></div>
               <div
-                className="left-foot foot stage-1"
-                id="left-foot"
+                className="foot stage-1"
                 ref={jacksonBodyParts.leftLegFoot}
               ></div>
             </div>
             <div className="right-leg" id="right-leg">
               <div
-                className="right-leg-upper leg-upper stage-3"
-                id="right-leg-upper"
+                className="leg-upper stage-3"
                 ref={jacksonBodyParts.rightLegUpper}
               ></div>
               <div
-                className="right-leg-lower leg-lower stage-3"
-                id="right-leg-lower"
+                className="leg-lower stage-3"
                 ref={jacksonBodyParts.rightLegLower}
               ></div>
               <div
-                className="right-foot foot stage-3"
-                id="right-foot"
+                className="foot stage-3"
                 ref={jacksonBodyParts.rightLegFoot}
               ></div>
             </div>
