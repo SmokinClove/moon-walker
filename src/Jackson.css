@@ -307,3 +307,69 @@
   border-right: 5px solid transparent;
   transform:  translate(4px,-4px) rotate(30deg);
 }
+
+#micheal-jackson .leg-upper.stage-8 {
+  position: absolute;
+  height: 40px;
+  width: 15px;
+  background-color: white;
+  transform: rotate(-120deg);
+  transform-origin: top;
+  transition: transform ease 1s;
+}
+
+#micheal-jackson .leg-lower.stage-8 {
+  position: absolute;
+  top: 40px;
+  height: 40px;
+  width: 15px;
+  background-color: white;
+  transform: translate(40px, -55px);
+  transition: transform ease 1s;
+}
+
+#micheal-jackson .foot.stage-8 {
+  position: absolute;
+  top: 80px;
+  width: 0px;
+  height: 0px;
+  border-bottom: 12px solid white;
+  border-left: 15px solid white;
+  border-top: 5px solid transparent;
+  border-right: 5px solid transparent;
+  transform: translate(45px,-55px) rotate(-50deg);
+  transition: transform ease 1s;
+}
+
+#micheal-jackson .leg-upper.stage-9 {
+  position: absolute;
+  height: 40px;
+  width: 15px;
+  background-color: white;
+  transform: rotate(-60deg);
+  transform-origin: top;
+  transition: transform ease 1s;
+}
+
+#micheal-jackson .leg-lower.stage-9 {
+  position: absolute;
+  top: 40px;
+  height: 40px;
+  width: 15px;
+  background-color: white;
+  transform: translate(0px,-30px) rotate(60deg);
+  transition: transform ease 1s;
+}
+
+#micheal-jackson .foot.stage-9 {
+  position: absolute;
+  top: 80px;
+  width: 0px;
+  height: 0px;
+  border-bottom: 12px solid white;
+  border-left: 15px solid white;
+  border-top: 5px solid transparent;
+  border-right: 5px solid transparent;
+  transform: translate(0px,-45px);
+  transition: transform ease 1s;
+}
