@@ -196,10 +196,6 @@
   transform:  translate(34px,-4px) rotate(50deg);
 }
 
-.moon-walker {
-  animation: moon-walks 1s ease-in-out;
-}
-
 #micheal-jackson .leg-upper.stage-4 {
   position: absolute;
   height: 40px;
