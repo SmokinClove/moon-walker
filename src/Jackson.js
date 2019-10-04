@@ -47,6 +47,14 @@ function useDanceStage() {
   return [bodyPartRef, setDanceStage];
 }
 
+function useDanceMoveRef(danceMove) {
+  const danceMoveRef = useRef();
+  useEffect(() => {
+    danceMoveRef.current = danceMove;
+  }, [danceMove]);
+  return danceMoveRef;
+}
+
 function useDanceMove(danceMove, index) {
   // body parts
   const [leftLegUpper, setLeftLegUpperStage] = useDanceStage();
@@ -56,11 +64,14 @@ function useDanceMove(danceMove, index) {
   const [rightLegLower, setRightLegLowerStage] = useDanceStage();
   const [rightLegFoot, setRightLegFootStage] = useDanceStage();
 
+  // capture the danceMove, so that when dance move change wont trigger a movement
+  const danceMoveRef = useDanceMoveRef(danceMove);
+
   // advance to the next step of the dance
   const moveBodyParts = useCallback(
     index => {
-      const nextLeftLegStage = danceMove.leftLegStages[index];
-      const nextRightLegStage = danceMove.rightLegStages[index];
+      const nextLeftLegStage = danceMoveRef.current.leftLegStages[index];
+      const nextRightLegStage = danceMoveRef.current.rightLegStages[index];
       setLeftLegUpperStage(nextLeftLegStage);
       setLeftLegLowerStage(nextLeftLegStage);
       setLeftLegFootStage(nextLeftLegStage);
@@ -69,7 +80,7 @@ function useDanceMove(danceMove, index) {
       setRightLegFootStage(nextRightLegStage);
     },
     [
-      danceMove,
+      danceMoveRef,
       setLeftLegFootStage,
       setLeftLegLowerStage,
       setLeftLegUpperStage,
@@ -98,6 +109,9 @@ function useLoopDancePosition(danceMove, index) {
   const [animDur, setAnimDur] = useState(0.7);
   const jackson = useRef();
 
+  // capture the danceMove, so that when dance move change wont trigger a movement
+  const danceMoveRef = useDanceMoveRef(danceMove);
+
   const moveDancePosition = useCallback(
     index => {
       if (
@@ -108,12 +122,13 @@ function useLoopDancePosition(danceMove, index) {
         setAnimDur(0);
       } else {
         setRightOffset(
-          rightOffset => rightOffset + danceMove.dancePosition.rightOffset
+          rightOffset =>
+            rightOffset + danceMoveRef.current.dancePosition.rightOffset
         );
-        setAnimDur(danceMove.dancePosition.animationDuration);
+        setAnimDur(danceMoveRef.current.dancePosition.animationDuration);
       }
     },
-    [danceMove]
+    [danceMoveRef]
   );
 
   const getJacksonStyle = index => ({
