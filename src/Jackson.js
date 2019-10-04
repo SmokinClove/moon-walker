@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import './Jackson.css';
 // the original duck walk https://www.youtube.com/watch?v=EqS76TFCCYs
 
@@ -49,7 +49,7 @@ function useDanceStage() {
 
 function useDanceMoveRef(danceMove) {
   const danceMoveRef = useRef();
-  useEffect(() => {
+  useLayoutEffect(() => {
     danceMoveRef.current = danceMove;
   }, [danceMove]);
   return danceMoveRef;
@@ -91,7 +91,7 @@ function useDanceMove(danceMove, index) {
   );
 
   // dance with index
-  useEffect(() => moveBodyParts(index), [index, moveBodyParts]);
+  useLayoutEffect(() => moveBodyParts(index), [index, moveBodyParts]);
 
   return {
     leftLegUpper,
@@ -137,7 +137,7 @@ function useLoopDancePosition(danceMove, index) {
   });
 
   // dance with index
-  useEffect(() => moveDancePosition(index), [index, moveDancePosition]);
+  useLayoutEffect(() => moveDancePosition(index), [index, moveDancePosition]);
 
   return [jackson, getJacksonStyle];
 }
@@ -152,10 +152,10 @@ const DANCE_MOVES = {
       animationDuration: 0.7,
       animation: [
         /* animations */
-        /* 0: ease in */ 'cubic-bezier(.87,.57,1,.68)',
-        /* 1: ease out */ 'cubic-bezier(0,.06,0,1.16)',
-        /* 2: ease in */ 'cubic-bezier(.87,.57,1,.68)',
-        /* 3: ease out */ 'cubic-bezier(0,.06,0,1.16)',
+        /* 0: ease out */ 'cubic-bezier(0,.06,0,1.16)',
+        /* 1: ease in */ 'cubic-bezier(.87,.57,1,.68)',
+        /* 2: ease out */ 'cubic-bezier(0,.06,0,1.16)',
+        /* 3: ease in */ 'cubic-bezier(.87,.57,1,.68)',
       ],
     },
   },
@@ -168,10 +168,10 @@ const DANCE_MOVES = {
       animationDuration: 0.7,
       animation: [
         /* animations */
-        /* 0: ease in */ 'cubic-bezier(.87,.57,1,.68)',
-        /* 1: ease out */ 'cubic-bezier(0,.06,0,1.16)',
-        /* 2: ease in */ 'cubic-bezier(.87,.57,1,.68)',
-        /* 3: ease out */ 'cubic-bezier(0,.06,0,1.16)',
+        /* 0: ease out */ 'cubic-bezier(0,.06,0,1.16)',
+        /* 1: ease in */ 'cubic-bezier(.87,.57,1,.68)',
+        /* 2: ease out */ 'cubic-bezier(0,.06,0,1.16)',
+        /* 3: ease in */ 'cubic-bezier(.87,.57,1,.68)',
       ],
     },
     bodyTransform: 'scaleX(-1)',
