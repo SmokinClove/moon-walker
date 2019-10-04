@@ -6,7 +6,7 @@ The page features a "dancer" who can do 2 dance moves: Moonwalk and Duck walk. T
 
 # What else can be done?
 Lots
-1. Add music for each dance modes
+1. Add music for each dance mode
 2. More dance modes
 3. Add spotlights
 4. Beautify Tiny Dancer
