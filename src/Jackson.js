@@ -161,6 +161,17 @@ const DANCE_MOVES = {
     },
     bodyTransform: 'scaleX(-1)',
   },
+  DUCK_DANCE: {
+    name: 'Duck dance',
+    leftLegStages: ['stage-8', 'stage-9'],
+    rightLegStages: ['stage-9', 'stage-8'],
+    dancePosition: {
+      rightOffset: 30,
+      animationDuration: 0.7,
+      animation: ['ease-in-out', 'ease-in-out'],
+    },
+    bodyTransform: 'scaleX(-1) translateY(45px)',
+  },
 };
 const DANCE_MODES = Object.keys(DANCE_MOVES);
 
