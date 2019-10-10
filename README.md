@@ -27,5 +27,5 @@ Lots
 attribute
 
 # Q&A
-1. Why is the file Jackson.js and Jackson.css?
+1. Why is the file Jackson.js and Jackson.css?<br />
 I originally built this for the moon walk only so the dancer was called just Micheal Jackson. He is renamed to Tiny Dancer now
