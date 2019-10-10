@@ -18,7 +18,14 @@ Lots
 
 # How to add a new mode
 1. First take a look at DANCE_MOVES in `src/Jackson.js`. This is where the body parts that participate in the dance, the stages for the body parts, the animations properties for the dance can be specified.
-2. The stages attribute is an array of the class names of each stage in one iteration for a body part. Each of the body parts should contain all the steps in the dance that makes up one iteration, i.e the stages for all body parts should have equal length. NOTE: currently the total num of moves in one iteration is counted using the number of steps the left leg takes, so we are assuming here that the legs will always move 
-3. If you are adding new moving body parts that will move, add the refs to the relevant body parts (see example of the legs)
-4. Add a unique name to the dance move
-5. If you need to shift the body of the dancer when switching dance modes, add the transform property to the bodyTransform attribute
+2. Give the new dance move a unique name
+3. The stages attribute is an array of the class names of each stage in one iteration for a body part. Each of the body parts should contain all the steps in the dance that makes up one iteration, i.e the stages for all body parts should have equal length. NOTE: currently the total num of moves in one iteration is counted using the number of steps the left leg takes, so we are assuming here that the legs will always move 
+4. If you are adding new moving body parts that will move, add the refs to the relevant body parts (see example of the legs)
+5. If you need to add a new appearance to the body part, you need to add a new stage name. Add the stage name as a class in `src/Jackson.css`
+6. Add a unique name to the dance move
+7. If you need to shift the body of the dancer when switching dance modes, add the transform property to the `bodyTransform` 
+attribute
+
+# Q&A
+1. Why is the file Jackson.js and Jackson.css?
+I originally built this for the moon walk only so the dancer was called just Micheal Jackson. He is renamed to Tiny Dancer now
