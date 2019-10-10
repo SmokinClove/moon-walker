@@ -17,7 +17,7 @@ Lots
 7. `¯\_(ツ)_/¯`
 
 # How to add a new mode
-1. First take a look at DANCE_MOVES in src/Jackson.js. This is where the body parts that participate in the dance, the stages for the body parts, the animations properties for the dance.
+1. First take a look at DANCE_MOVES in `src/Jackson.js`. This is where the body parts that participate in the dance, the stages for the body parts, the animations properties for the dance can be specified.
 2. The stages attribute is an array of the class names of each stage in one iteration for a body part. Each of the body parts should contain all the steps in the dance that makes up one iteration, i.e the stages for all body parts should have equal length. NOTE: currently the total num of moves in one iteration is counted using the number of steps the left leg takes, so we are assuming here that the legs will always move 
 3. If you are adding new moving body parts that will move, add the refs to the relevant body parts (see example of the legs)
 4. Add a unique name to the dance move
