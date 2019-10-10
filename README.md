@@ -6,6 +6,10 @@ The page features a "dancer" who can do 2 dance moves: Moonwalk and Duck walk. T
 
 Current modes:
 ![gif](https://github.com/SmokinClove/moon-walker/blob/master/dance.gif)
+
+# How to run the code
+1. Just like any other create-react-app projects, run `yarn start` if you use yarn, or `npm start`. The default port to run the app is 3000, so your brower will be opened at localhost:3000. If you are not familiar, read the instructions at https://github.com/facebook/create-react-app
+
 # What else can be done?
 Lots
 1. Add music for each dance mode
@@ -25,6 +29,7 @@ Lots
 6. Add a unique name to the dance move
 7. If you need to shift the body of the dancer when switching dance modes, add the transform property to the `bodyTransform` 
 attribute
+
 
 # Q&A
 1. Why is the file Jackson.js and Jackson.css?<br />
