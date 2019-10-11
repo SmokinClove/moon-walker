@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import './Jackson.css';
+import './Stars.css';
 // the original duck walk https://www.youtube.com/watch?v=EqS76TFCCYs
 
 // useInterval
@@ -234,6 +235,8 @@ export default function Jackson() {
     <div className="playground-moonwalk">
       <div className="ceiling"></div>
       <div className="dancer-space">
+      <div class="stars"></div>
+      <div class="twinkling"></div>
         <div
           className="micheal-jackson"
           id="micheal-jackson"
