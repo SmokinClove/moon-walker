@@ -7,6 +7,9 @@ The page features a "dancer" who can do currently 3 dance moves: Moonwalk, Duck 
 Current modes:
 ![gif](https://github.com/SmokinClove/moon-walker/blob/master/dance.gif)
 
+Updated with sparkling stars <3
+![Screenshot with stars](https://github.com/SmokinClove/moon-walker/blob/master/moon_walker.png)
+
 # How to run the code
 1. Just like any other create-react-app projects, run `yarn start` if you use yarn, or `npm start`. The default port to run the app is 3000, so your brower will be opened at localhost:3000. If you are not familiar, read the instructions at https://github.com/facebook/create-react-app
 
