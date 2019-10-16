@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useCallback,
+  useRef
+} from 'react';
 import './Jackson.css';
 import './Stars.css';
 // the original duck walk https://www.youtube.com/watch?v=EqS76TFCCYs
@@ -87,7 +93,7 @@ function useDanceMove(danceMove, index) {
       setLeftLegUpperStage,
       setRightLegFootStage,
       setRightLegLowerStage,
-      setRightLegUpperStage,
+      setRightLegUpperStage
     ]
   );
 
@@ -100,7 +106,7 @@ function useDanceMove(danceMove, index) {
     leftLegFoot,
     rightLegUpper,
     rightLegLower,
-    rightLegFoot,
+    rightLegFoot
   };
 }
 
@@ -134,7 +140,7 @@ function useLoopDancePosition(danceMove, index) {
 
   const getJacksonStyle = index => ({
     right: rightOffset,
-    transition: `right ${animDur}s ${danceMove.dancePosition.animation[index]}`,
+    transition: `right ${animDur}s ${danceMove.dancePosition.animation[index]}`
   });
 
   // dance with index
@@ -156,9 +162,9 @@ const DANCE_MOVES = {
         /* 0: ease out */ 'cubic-bezier(0,.06,0,1.16)',
         /* 1: ease in */ 'cubic-bezier(.87,.57,1,.68)',
         /* 2: ease out */ 'cubic-bezier(0,.06,0,1.16)',
-        /* 3: ease in */ 'cubic-bezier(.87,.57,1,.68)',
-      ],
-    },
+        /* 3: ease in */ 'cubic-bezier(.87,.57,1,.68)'
+      ]
+    }
   },
   DUCK_WALK: {
     name: 'Duck walk',
@@ -172,10 +178,10 @@ const DANCE_MOVES = {
         /* 0: ease out */ 'cubic-bezier(0,.06,0,1.16)',
         /* 1: ease in */ 'cubic-bezier(.87,.57,1,.68)',
         /* 2: ease out */ 'cubic-bezier(0,.06,0,1.16)',
-        /* 3: ease in */ 'cubic-bezier(.87,.57,1,.68)',
-      ],
+        /* 3: ease in */ 'cubic-bezier(.87,.57,1,.68)'
+      ]
     },
-    bodyTransform: 'scaleX(-1)',
+    bodyTransform: 'scaleX(-1)'
   },
   DUCK_DANCE: {
     name: 'Duck dance',
@@ -184,10 +190,10 @@ const DANCE_MOVES = {
     dancePosition: {
       rightOffset: 30,
       animationDuration: 0.7,
-      animation: ['ease-in-out', 'ease-in-out'],
+      animation: ['ease-in-out', 'ease-in-out']
     },
-    bodyTransform: 'scaleX(-1) translateY(45px)',
-  },
+    bodyTransform: 'scaleX(-1) translateY(45px)'
+  }
 };
 const DANCE_MODES = Object.keys(DANCE_MOVES);
 
@@ -232,64 +238,69 @@ export default function Jackson() {
   ); /* <-- This is the main call that kicks off the dancing */
 
   return (
-    <div className="playground-moonwalk">
-      <div className="ceiling"></div>
-      <div className="dancer-space">
-      <div class="stars"></div>
-      <div class="twinkling"></div>
+    <div className='playground-moonwalk'>
+      <div className='ceiling'></div>
+      <div className='dancer-space'>
+        <div class='stars'>
+          <h1 style={{ color: 'white' }}>
+            {' '}
+            <center> Sun Will shine on us again!</center>
+          </h1>
+        </div>
+        <div class='twinkling'></div>
         <div
-          className="micheal-jackson"
-          id="micheal-jackson"
+          className='micheal-jackson'
+          id='micheal-jackson'
           ref={jackson}
           style={{
             ...getJacksonStyle(dancePosIndex),
-            transform: danceMove.bodyTransform,
+            transform: danceMove.bodyTransform
           }}
         >
-          <div className="head">
-            <div className="hat">
-              <div className="hat-top"></div>
-              <div className="hat-bottom"></div>
+          <div className='head'>
+            <div className='hat'>
+              <div className='hat-top'></div>
+              <div className='hat-bottom'></div>
             </div>
-            <div className="face"></div>
+            <div className='face'></div>
           </div>
-          <div className="body">
-            <div className="left-arm"></div>
-            <div className="right-arm"></div>
+          <div className='body'>
+            <div className='left-arm'></div>
+            <div className='right-arm'></div>
           </div>
-          <div className="legs">
-            <div className="left-leg" id="left-leg">
+          <div className='legs'>
+            <div className='left-leg' id='left-leg'>
               <div
-                className="leg-upper  stage-1"
+                className='leg-upper  stage-1'
                 ref={jacksonBodyParts.leftLegUpper}
               ></div>
               <div
-                className="leg-lower stage-1"
+                className='leg-lower stage-1'
                 ref={jacksonBodyParts.leftLegLower}
               ></div>
               <div
-                className="foot stage-1"
+                className='foot stage-1'
                 ref={jacksonBodyParts.leftLegFoot}
               ></div>
             </div>
-            <div className="right-leg" id="right-leg">
+            <div className='right-leg' id='right-leg'>
               <div
-                className="leg-upper stage-3"
+                className='leg-upper stage-3'
                 ref={jacksonBodyParts.rightLegUpper}
               ></div>
               <div
-                className="leg-lower stage-3"
+                className='leg-lower stage-3'
                 ref={jacksonBodyParts.rightLegLower}
               ></div>
               <div
-                className="foot stage-3"
+                className='foot stage-3'
                 ref={jacksonBodyParts.rightLegFoot}
               ></div>
             </div>
           </div>
         </div>
       </div>
-      <div className="stage">
+      <div className='stage'>
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
           <div
             style={{
@@ -300,7 +311,7 @@ export default function Jackson() {
               background: 'white',
               padding: '0 20px',
               fontWeight: '700',
-              color: on ? 'red' : 'green',
+              color: on ? 'red' : 'green'
             }}
             onClick={toggleOn}
           >
@@ -308,7 +319,7 @@ export default function Jackson() {
           </div>
           <form>
             <input
-              type="number"
+              type='number'
               value={delay}
               onChange={changeDelay}
               style={{ height: '100px', fontSize: '30px' }}
@@ -322,7 +333,7 @@ export default function Jackson() {
               fontSize: 'larger',
               background: 'white',
               padding: '0 20px',
-              fontWeight: '700',
+              fontWeight: '700'
             }}
             onClick={toggleDance}
           >
