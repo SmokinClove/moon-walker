@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import './Jackson.css';
 import './Stars.css';
+import Music from './music/bensound-allthat.mp3';
 // the original duck walk https://www.youtube.com/watch?v=EqS76TFCCYs
 
 // useInterval
@@ -191,7 +192,7 @@ const DANCE_MOVES = {
 };
 const DANCE_MODES = Object.keys(DANCE_MOVES);
 
-export default function Jackson() {
+export default function Jackson({ Music }) {
   /* states */
   const [danceModeIndex, incDanceModeIndex] = useLoopIndex(DANCE_MODES.length);
   const danceMode = DANCE_MODES[danceModeIndex];
@@ -230,7 +231,6 @@ export default function Jackson() {
     moveOneIndex,
     on ? delay : null
   ); /* <-- This is the main call that kicks off the dancing */
-
   return (
     <div className="playground-moonwalk">
       <div className="ceiling"></div>
