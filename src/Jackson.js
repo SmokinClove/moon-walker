@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import './Jackson.css';
 import './Stars.css';
-import Music from './music/bensound-allthat.mp3';
+import UIfx from 'uifx'
+import MusicSound from './music/bensound-allthat.mp3';
 // the original duck walk https://www.youtube.com/watch?v=EqS76TFCCYs
 
 // useInterval
@@ -25,6 +26,15 @@ function useInterval(callback, delay) {
     }
   }, [delay]);
 }
+
+const music = new UIfx(
+  MusicSound,
+  {
+    volume: 1,
+    throttleMs: 100,
+  }
+)
+music.play();
 
 function useLoopIndex(maxIndex) {
   const [index, setIndex] = useState(0);
