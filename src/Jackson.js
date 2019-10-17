@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import './Jackson.css';
 import './Stars.css';
+import Quote from './Quote';
 // the original duck walk https://www.youtube.com/watch?v=EqS76TFCCYs
 
 // useInterval
@@ -239,7 +240,9 @@ export default function Jackson() {
 
   return (
     <div className='playground-moonwalk'>
-      <div className='ceiling'></div>
+      <div className="ceiling">
+        <Quote />
+      </div>
       <div className='dancer-space'>
         <div class='stars'>
           <h1 style={{ color: 'white' }}>
