@@ -50,6 +50,7 @@
   width: 45px;
   background-color: white;
   margin: 0 10px;
+  box-shadow: 5px 10px 10px #fff;
 }
 
 .hat-bottom {
@@ -59,6 +60,7 @@
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   width: 45px;
+  box-shadow: 5px 10px 10px #fff;
 }
 #micheal-jackson .face {
   width: 40px;
@@ -67,6 +69,7 @@
   border-left: 20px solid rgb(247, 197, 197);
   transform: rotate(-70deg);
   margin-top: -30px;
+  box-shadow: 5px 10px 10px #fff;
 }
 
 #micheal-jackson .body {
@@ -77,6 +80,7 @@
   height: 50px;
   background-color: white;
   margin-right: 21px;
+  box-shadow: 5px 10px 10px #fff;
 }
 
 #micheal-jackson .right-arm {
@@ -86,6 +90,7 @@
   transform: rotate(-30deg) translate(21px, 5px);
   border-bottom: 10px solid white;
   border-right: 10px solid white;
+  box-shadow: 5px 10px 10px #fff;
   height: 15px;
 }
 
@@ -96,6 +101,7 @@
   transform: rotate(125deg) translate(15px, 15px);
   border-bottom: 10px solid white;
   border-right: 10px solid white;
+  box-shadow: 5px 10px 10px #fff;
   height: 20px;
 }
 
@@ -116,6 +122,7 @@
   height: 40px;
   width: 15px;
   background-color: white;
+  box-shadow: 5px 10px 10px #fff;
 }
 
 #micheal-jackson .leg-lower {
@@ -124,6 +131,7 @@
   height: 40px;
   width: 15px;
   background-color: white;
+  box-shadow: 5px 10px 10px #fff;
 }
 
 #micheal-jackson .foot {
