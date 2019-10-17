@@ -7,8 +7,7 @@ import React, {
 } from 'react';
 import './Jackson.css';
 import './Stars.css';
-import Quote from './Quote';
-// the original duck walk https://www.youtube.com/watch?v=EqS76TFCCYs
+import { DANCE_MOVES } from './DanceMoves';
 
 // useInterval
 // copied wholesale from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
@@ -111,7 +110,7 @@ function useDanceMove(danceMove, index) {
   };
 }
 
-function useLoopDancePosition(danceMove, index) {
+function useLoopDancePosition(danceMove, index, fixedOffset) {
   // body positions
   const [rightOffset, setRightOffset] = useState(0);
   const [animDur, setAnimDur] = useState(0.7);
@@ -122,9 +121,19 @@ function useLoopDancePosition(danceMove, index) {
 
   const moveDancePosition = useCallback(
     index => {
-      if (
+      // Shadow dancer just uses the fixedOffset of the parent dancer
+      if (typeof fixedOffset != 'undefined') {
+        let currentOffset;
+        setRightOffset(
+          rightOffset => {
+            currentOffset = rightOffset;
+            return fixedOffset;
+          }
+        );
+        setAnimDur(currentOffset < fixedOffset ? danceMoveRef.current.dancePosition.animationDuration : 0);
+      } else if (
         jackson.current &&
-        jackson.current.getBoundingClientRect().right <= 0
+        jackson.current.getBoundingClientRect().right <= -10
       ) {
         setRightOffset(0);
         setAnimDur(0);
@@ -136,7 +145,7 @@ function useLoopDancePosition(danceMove, index) {
         setAnimDur(danceMoveRef.current.dancePosition.animationDuration);
       }
     },
-    [danceMoveRef]
+    [danceMoveRef, fixedOffset]
   );
 
   const getJacksonStyle = index => ({
@@ -147,67 +156,13 @@ function useLoopDancePosition(danceMove, index) {
   // dance with index
   useLayoutEffect(() => moveDancePosition(index), [index, moveDancePosition]);
 
-  return [jackson, getJacksonStyle];
+  return [jackson, rightOffset, getJacksonStyle];
 }
 
-const DANCE_MOVES = {
-  MOON_WALK: {
-    name: 'Moon walk',
-    leftLegStages: ['stage-1', 'stage-2', 'stage-3', 'stage-2'],
-    rightLegStages: ['stage-3', 'stage-2', 'stage-1', 'stage-2'],
-    dancePosition: {
-      rightOffset: 60,
-      animationDuration: 0.7,
-      animation: [
-        /* animations */
-        /* 0: ease out */ 'cubic-bezier(0,.06,0,1.16)',
-        /* 1: ease in */ 'cubic-bezier(.87,.57,1,.68)',
-        /* 2: ease out */ 'cubic-bezier(0,.06,0,1.16)',
-        /* 3: ease in */ 'cubic-bezier(.87,.57,1,.68)'
-      ]
-    }
-  },
-  DUCK_WALK: {
-    name: 'Duck walk',
-    leftLegStages: ['stage-4', 'stage-6', 'stage-4', 'stage-6'],
-    rightLegStages: ['stage-5', 'stage-7', 'stage-5', 'stage-7'],
-    dancePosition: {
-      rightOffset: 60,
-      animationDuration: 0.7,
-      animation: [
-        /* animations */
-        /* 0: ease out */ 'cubic-bezier(0,.06,0,1.16)',
-        /* 1: ease in */ 'cubic-bezier(.87,.57,1,.68)',
-        /* 2: ease out */ 'cubic-bezier(0,.06,0,1.16)',
-        /* 3: ease in */ 'cubic-bezier(.87,.57,1,.68)'
-      ]
-    },
-    bodyTransform: 'scaleX(-1)'
-  },
-  DUCK_DANCE: {
-    name: 'Duck dance',
-    leftLegStages: ['stage-8', 'stage-9'],
-    rightLegStages: ['stage-9', 'stage-8'],
-    dancePosition: {
-      rightOffset: 30,
-      animationDuration: 0.7,
-      animation: ['ease-in-out', 'ease-in-out']
-    },
-    bodyTransform: 'scaleX(-1) translateY(45px)'
-  }
-};
-const DANCE_MODES = Object.keys(DANCE_MOVES);
 
-export default function Jackson() {
-  /* states */
-  const [danceModeIndex, incDanceModeIndex] = useLoopIndex(DANCE_MODES.length);
-  const danceMode = DANCE_MODES[danceModeIndex];
-
-  const [on, setOn] = useState(false);
-  const [delay, setDelay] = useState(700);
-
+export default function Jackson(props) {
   // dances
-  const danceMove = DANCE_MOVES[danceMode];
+  const danceMove = DANCE_MOVES[props.danceMode];
 
   // moves
   const totalMoves = danceMove.leftLegStages.length;
@@ -217,15 +172,11 @@ export default function Jackson() {
   // positions
   const totalPositions = danceMove.dancePosition.animation.length;
   const [dancePosIndex, nextDancePosition] = useLoopIndex(totalPositions);
-  const [jackson, getJacksonStyle] = useLoopDancePosition(
+  const [jackson, rightOffset, getJacksonStyle] = useLoopDancePosition(
     danceMove,
-    dancePosIndex
+    dancePosIndex,
+    props.fixedOffset
   );
-
-  // the use states
-  const changeDelay = e => setDelay(e.target.value);
-  const toggleDance = () => incDanceModeIndex();
-  const toggleOn = () => setOn(!on);
 
   // advance to the next step of the dance
   const moveOneIndex = () => {
@@ -235,115 +186,72 @@ export default function Jackson() {
 
   useInterval(
     moveOneIndex,
-    on ? delay : null
+    props.on ? props.delay : null
   ); /* <-- This is the main call that kicks off the dancing */
 
+  let shadowDancer = <div />;
+  if (props.hasShadow) {
+    shadowDancer = (
+      <div className="shadow">
+        <Jackson on={props.on} delay={props.delay} danceMode={props.danceMode} fixedOffset={rightOffset} />
+      </div>
+    );
+  };
+
+
   return (
-    <div className='playground-moonwalk'>
-      <div className="ceiling">
-        <Quote />
-      </div>
-      <div className='dancer-space'>
-        <div class='stars'>
-          <h1 style={{ color: 'white' }}>
-            {' '}
-            <center> Sun Will shine on us again!</center>
-          </h1>
+  <div>
+    <div
+      className={`micheal-jackson ${props.className || ''}`}
+      ref={jackson}
+      style={{
+        ...getJacksonStyle(dancePosIndex),
+        transform: danceMove.bodyTransform
+      }}
+    >
+      <div className='head'>
+        <div className='hat'>
+          <div className='hat-top'></div>
+          <div className='hat-bottom'></div>
         </div>
-        <div class='twinkling'></div>
-        <div
-          className='micheal-jackson'
-          id='micheal-jackson'
-          ref={jackson}
-          style={{
-            ...getJacksonStyle(dancePosIndex),
-            transform: danceMove.bodyTransform
-          }}
-        >
-          <div className='head'>
-            <div className='hat'>
-              <div className='hat-top'></div>
-              <div className='hat-bottom'></div>
-            </div>
-            <div className='face'></div>
-          </div>
-          <div className='body'>
-            <div className='left-arm'></div>
-            <div className='right-arm'></div>
-          </div>
-          <div className='legs'>
-            <div className='left-leg' id='left-leg'>
-              <div
-                className='leg-upper  stage-1'
-                ref={jacksonBodyParts.leftLegUpper}
-              ></div>
-              <div
-                className='leg-lower stage-1'
-                ref={jacksonBodyParts.leftLegLower}
-              ></div>
-              <div
-                className='foot stage-1'
-                ref={jacksonBodyParts.leftLegFoot}
-              ></div>
-            </div>
-            <div className='right-leg' id='right-leg'>
-              <div
-                className='leg-upper stage-3'
-                ref={jacksonBodyParts.rightLegUpper}
-              ></div>
-              <div
-                className='leg-lower stage-3'
-                ref={jacksonBodyParts.rightLegLower}
-              ></div>
-              <div
-                className='foot stage-3'
-                ref={jacksonBodyParts.rightLegFoot}
-              ></div>
-            </div>
-          </div>
-        </div>
+        <div className='face'></div>
       </div>
-      <div className='stage'>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <div className='body'>
+        <div className='left-arm'></div>
+        <div className='right-arm'></div>
+      </div>
+      <div className='legs'>
+        <div className='left-leg' id='left-leg'>
           <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              fontSize: 'larger',
-              background: 'white',
-              padding: '0 20px',
-              fontWeight: '700',
-              color: on ? 'red' : 'green'
-            }}
-            onClick={toggleOn}
-          >
-            {on ? 'STOP' : 'START'}
-          </div>
-          <form>
-            <input
-              type='number'
-              value={delay}
-              onChange={changeDelay}
-              style={{ height: '100px', fontSize: '30px' }}
-            />
-          </form>
+            className='leg-upper  stage-1'
+            ref={jacksonBodyParts.leftLegUpper}
+          ></div>
           <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              fontSize: 'larger',
-              background: 'white',
-              padding: '0 20px',
-              fontWeight: '700'
-            }}
-            onClick={toggleDance}
-          >
-            {danceMove.name}
-          </div>
+            className='leg-lower stage-1'
+            ref={jacksonBodyParts.leftLegLower}
+          ></div>
+          <div
+            className='foot stage-1'
+            ref={jacksonBodyParts.leftLegFoot}
+          ></div>
+        </div>
+        <div className='right-leg' id='right-leg'>
+          <div
+            className='leg-upper stage-3'
+            ref={jacksonBodyParts.rightLegUpper}
+          ></div>
+          <div
+            className='leg-lower stage-3'
+            ref={jacksonBodyParts.rightLegLower}
+          ></div>
+          <div
+            className='foot stage-3'
+            ref={jacksonBodyParts.rightLegFoot}
+          ></div>
         </div>
       </div>
     </div>
+    {shadowDancer}
+  </div>
   );
 }

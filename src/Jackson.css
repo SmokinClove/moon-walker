@@ -26,6 +26,10 @@
   background-color: rgba(90, 61, 206, 0.4);
 }
 
+.button {
+  cursor: pointer;
+}
+
 .micheal-jackson {
   position: absolute;
   margin-top: 20px;
@@ -35,6 +39,16 @@
   align-items: center;
   width: 70px;
   z-index: 2;
+}
+
+.shadow {
+  transform: translateY(435px) scaleY(-1) translateX(72px) skewX(-18deg);
+  filter: contrast(0) blur(5px)
+}
+
+.shadow * {
+  color: grey;
+  border-color: grey;
 }
 
 .hat {
@@ -60,7 +74,7 @@
   border-right: 10px solid transparent;
   width: 45px;
 }
-#micheal-jackson .face {
+.micheal-jackson .face {
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -69,7 +83,7 @@
   margin-top: -30px;
 }
 
-#micheal-jackson .body {
+.micheal-jackson .body {
   position: relative;
   justify-content: center;
   margin-top: 10px;
@@ -79,7 +93,7 @@
   margin-right: 21px;
 }
 
-#micheal-jackson .right-arm {
+.micheal-jackson .right-arm {
   position: absolute;
   width: 20px;
   background-color: transparent;
@@ -89,7 +103,7 @@
   height: 15px;
 }
 
-#micheal-jackson .left-arm {
+.micheal-jackson .left-arm {
   position: absolute;
   width: 20px;
   background-color: transparent;
@@ -99,18 +113,18 @@
   height: 20px;
 }
 
-#micheal-jackson .legs {
+.micheal-jackson .legs {
   width: 100%;
   margin-top: 2px;
   display: flex;
 }
 
-#micheal-jackson .left-leg, #micheal-jackson .right-leg {
+.micheal-jackson .left-leg, .micheal-jackson .right-leg {
   position: relative;
   margin-left: 10px;
 }
 
-#micheal-jackson .leg-upper {
+.micheal-jackson .leg-upper {
   position: absolute;
   top: 0;
   height: 40px;
@@ -118,7 +132,7 @@
   background-color: white;
 }
 
-#micheal-jackson .leg-lower {
+.micheal-jackson .leg-lower {
   position: absolute;
   top: 40px;
   height: 40px;
@@ -126,7 +140,7 @@
   background-color: white;
 }
 
-#micheal-jackson .foot {
+.micheal-jackson .foot {
   position: absolute;
   top: 80px;
   width: 0px;
@@ -138,108 +152,108 @@
   position: absolute;
 }
 
-#micheal-jackson .leg-upper.stage-1 {
+.micheal-jackson .leg-upper.stage-1 {
   transform: rotate(10deg);
 }
 
-#micheal-jackson .leg-lower.stage-1 {
+.micheal-jackson .leg-lower.stage-1 {
   transform: rotate(10deg) translateX(-7px);
 }
 
-#micheal-jackson .foot.stage-1 {
+.micheal-jackson .foot.stage-1 {
   border-bottom: 10px solid white;
   border-left: 12px solid white;
   transform: translateX(-10px);
 }
 
-#micheal-jackson .leg-upper.stage-2 {
+.micheal-jackson .leg-upper.stage-2 {
   transform: rotate(-10deg) translate(7px,0px);
 }
 
-#micheal-jackson .leg-lower.stage-2 {
+.micheal-jackson .leg-lower.stage-2 {
   transform: rotate(0deg) translate(7px,0px);
 }
 
-#micheal-jackson .foot.stage-2 {
+.micheal-jackson .foot.stage-2 {
   border-bottom: 10px solid white;
   border-left: 12px solid white;
   transform: rotate(10deg) translate(7px,0px);
 }
 
-#micheal-jackson .leg-upper.stage-3 {
+.micheal-jackson .leg-upper.stage-3 {
   transform: rotate(-30deg) translate(18px,10px);
 }
 
-#micheal-jackson .leg-lower.stage-3 {
+.micheal-jackson .leg-lower.stage-3 {
   transform: rotate(-10deg) translate(35px, 2px);
 }
 
-#micheal-jackson .foot.stage-3 {
+.micheal-jackson .foot.stage-3 {
   transform:  translate(34px,-4px) rotate(50deg);
 }
 
-#micheal-jackson .leg-upper.stage-4 {
+.micheal-jackson .leg-upper.stage-4 {
   transform: rotate(-40deg) translate(10px,10px);
 }
-#micheal-jackson .leg-lower.stage-4 {
+.micheal-jackson .leg-lower.stage-4 {
   transform: rotate(15deg) translate(20px, -10px);
 }
 
-#micheal-jackson .foot.stage-4 {
+.micheal-jackson .foot.stage-4 {
   transform:  translate(14px,-4px) rotate(50deg);
 }
 
-#micheal-jackson .leg-upper.stage-5 {
+.micheal-jackson .leg-upper.stage-5 {
   transform: rotate(-55deg) translate(18px,10px);
 }
-#micheal-jackson .leg-lower.stage-5 {
+.micheal-jackson .leg-lower.stage-5 {
   top: 40px;
   transform: rotate(-30deg) translate(50px, 4px);
 }
 
-#micheal-jackson .foot.stage-5 {
+.micheal-jackson .foot.stage-5 {
   transform:  translate(64px,-30px) rotate(-40deg);
 }
 
-#micheal-jackson .leg-upper.stage-6 {
+.micheal-jackson .leg-upper.stage-6 {
   transform: rotate(-30deg) translate(10px,10px);
 }
-#micheal-jackson .leg-lower.stage-6 {
+.micheal-jackson .leg-lower.stage-6 {
   transform: rotate(15deg) translate(15px, -5px);
 }
 
-#micheal-jackson .foot.stage-6 {
+.micheal-jackson .foot.stage-6 {
   transform:  translate(4px,-4px) rotate(30deg);
 }
 
-#micheal-jackson .leg-upper.stage-8 {
+.micheal-jackson .leg-upper.stage-8 {
   transform: rotate(-120deg);
   transform-origin: top;
   transition: transform ease 1s;
 }
 
-#micheal-jackson .leg-lower.stage-8 {
+.micheal-jackson .leg-lower.stage-8 {
   transform: translate(40px, -55px);
   transition: transform ease 1s;
 }
 
-#micheal-jackson .foot.stage-8 {
+.micheal-jackson .foot.stage-8 {
   transform: translate(45px,-55px) rotate(-50deg);
   transition: transform ease 1s;
 }
 
-#micheal-jackson .leg-upper.stage-9 {
+.micheal-jackson .leg-upper.stage-9 {
   transform: rotate(-60deg);
   transform-origin: top;
   transition: transform ease 1s;
 }
 
-#micheal-jackson .leg-lower.stage-9 {
+.micheal-jackson .leg-lower.stage-9 {
   transform: translate(0px,-30px) rotate(60deg);
   transition: transform ease 1s;
 }
 
-#micheal-jackson .foot.stage-9 {
+.micheal-jackson .foot.stage-9 {
   transform: translate(0px,-45px);
   transition: transform ease 1s;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import Jackson from './Jackson';
+import DancerSpace from './DancerSpace';
 
 function App() {
-  return <Jackson />
+  return <DancerSpace />
 }
 
 export default App;
