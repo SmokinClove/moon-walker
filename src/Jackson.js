@@ -7,6 +7,8 @@ import React, {
 } from 'react';
 import './Jackson.css';
 import './Stars.css';
+import UIfx from 'uifx'
+import MusicSound from './music/bensound-allthat.mp3';
 import Quote from './Quote';
 // the original duck walk https://www.youtube.com/watch?v=EqS76TFCCYs
 
@@ -31,6 +33,16 @@ function useInterval(callback, delay) {
     }
   }, [delay]);
 }
+
+//music
+const music = new UIfx(
+  MusicSound,
+  {
+    volume: 1,
+    throttleMs: 100,
+  }
+)
+music.play();
 
 function useLoopIndex(maxIndex) {
   const [index, setIndex] = useState(0);
@@ -198,7 +210,7 @@ const DANCE_MOVES = {
 };
 const DANCE_MODES = Object.keys(DANCE_MOVES);
 
-export default function Jackson() {
+export default function Jackson({ Music }) {
   /* states */
   const [danceModeIndex, incDanceModeIndex] = useLoopIndex(DANCE_MODES.length);
   const danceMode = DANCE_MODES[danceModeIndex];
@@ -237,7 +249,6 @@ export default function Jackson() {
     moveOneIndex,
     on ? delay : null
   ); /* <-- This is the main call that kicks off the dancing */
-
   return (
     <div className='playground-moonwalk'>
       <div className="ceiling">
