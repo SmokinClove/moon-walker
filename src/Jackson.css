@@ -243,3 +243,12 @@
   transform: translate(0px,-45px);
   transition: transform ease 1s;
 }
+
+#micheal-jackson .shadow {
+  width: 100px;
+  height: 50px;
+  background: gray;
+  border-radius: 100px / 50px;
+  position: absolute;
+  bottom: -120px;
+}

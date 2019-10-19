@@ -257,6 +257,9 @@ export default function Jackson() {
             transform: danceMove.bodyTransform
           }}
         >
+          <div className='shadow'
+            ref={jacksonBodyParts.shadow}>
+          </div>
           <div className='head'>
             <div className='hat'>
               <div className='hat-top'></div>
